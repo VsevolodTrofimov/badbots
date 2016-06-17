@@ -1,1 +1,4 @@
-# doom-bot
+# badbots
+- butcherbot
+- Strifybot
+- Overwatch bot
