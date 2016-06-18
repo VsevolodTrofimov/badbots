@@ -1,89 +1,92 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# CMake and building output
+**/bin
+Makefile
+ImportExecutables.cmake
+**/link-make
 
-# C extensions
-*.so
+*~
+**.o
+**.a
+**.so
+**.lib
+**.dll
+**.pk3
+**.exp
+**/build
+**/CMakeCache.txt
+**/CMakeFiles
+**/CMakeScripts
+**/cmake_install.cmake
+**/install_manifest.txt
 
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
+# MSVC
+**.sln
+**.suo
+**.sdf
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# Python 
+**.pyd
+**.pyc
+examples/python/*.cfg
+examples/python/*.ini
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# Java
+**.jar
+**.class
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-.hypothesis/
+# Copied from the original ZDoom repository (and modified)
+**/Debug
+**/Release
+**/debug
+**/release
+**/release_gcc
+**/debug_gcc
+**.ncb
+**.pdb
+**.ilk
+**.aps
+**.user
+**/DOOMSTATS.TXT
+src/vizdoom/bzip2/x64/
+src/vizdoom/game-music-emu/x64/
+src/vizdoom/gdtoa/arith.h
+src/vizdoom/gdtoa/arithchk
+src/vizdoom/gdtoa/gd_qnan.h
+src/vizdoom/gdtoa/qnan
+src/vizdoom/gdtoa/x64/
+src/vizdoom/jpeg-6b/x64/
+src/vizdoom/lzma/x64/
+src/vizdoom/src/sc_man_scanner.h
+src/vizdoom/src/xlat_parser.c
+src/vizdoom/src/xlat_parser.h
+src/vizdoom/src/xlat_parser.out
+src/vizdoom/src/xlat_parser.y
+src/vizdoom/tools/*/debug
+src/vizdoom/tools/*/release
+src/vizdoom/tools/*/*.exe
+src/vizdoom/tools/lemon/lemon
+src/vizdoom/tools/re2c/re2c
+src/vizdoom/tools/updaterevision/x64/
+src/vizdoom/tools/updaterevision/updaterevision
+src/vizdoom/tools/zipdir/x64
+src/vizdoom/tools/zipdir/zipdir
+src/vizdoom/wadsrc_wad
+src/vizdoom/zdoom_docs
+src/vizdoom/zlib/x64/
 
-# Translations
-*.mo
-*.pot
+# Game wads, scenarios backups, logs, demos and personal configurations
+**.bak
+**/doom2.wad
+**/doom.wad
+**/freedoom2.wad
+**/freedoom1.wad
+**/freedm.wad
+**.bcp
+**.lmp
+**.log
 
-# Django stuff:
-*.log
-local_settings.py
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# IPython Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# dotenv
-.env
-
-# virtualenv
-venv/
-ENV/
-
-# Spyder project settings
-.spyderproject
-
-# Rope project settings
-.ropeproject
+# CLion & PyCharm
+**.idea
