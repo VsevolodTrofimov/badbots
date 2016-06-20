@@ -76,7 +76,8 @@ class Add:
 
         marker = plot.plot(
             [cords_start["x"], cords_end["x"]],
-            [cords_start["y"], cords_end["y"]]
+            [cords_start["y"], cords_end["y"]],
+            color=type_color[type]
         )
         drew["line"][id] = len(plot.gca().lines)-1
         clearfix()
