@@ -31,15 +31,15 @@ game = DoomGame()
 # game.load_config("../../examples/config/basic.cfg")
 
 # Sets path to vizdoom engine executive which will be spawned as a separate process. Default is "./vizdoom".
-game.set_vizdoom_path("../../bin/vizdoom")
+game.set_vizdoom_path("../bin/vizdoom")
 
 # Sets path to doom2 iwad resource file which contains the actual doom game. Default is "./doom2.wad".
-game.set_doom_game_path("../../scenarios/freedoom2.wad")
+game.set_doom_game_path("../scenarios/freedoom2.wad")
 # game.set_doom_game_path("../../scenarios/doom2.wad")  # Not provided with environment due to licences.
 
 # Sets path to additional resources iwad file which is basically your scenario iwad.
 # If not specified default doom2 maps will be used and it's pretty much useles... unless you want to play doom.
-game.set_doom_scenario_path("../../scenarios/basic.wad")
+game.set_doom_scenario_path("../scenarios/basic.wad")
 
 # Sets map to start (scenario .wad files can contain many maps).
 game.set_doom_map("map01")
@@ -48,8 +48,8 @@ game.set_doom_map("map01")
 game.set_screen_resolution(ScreenResolution.RES_640X480)
 
 # Sets the screen buffer format. Not used here but now you can change it. Defalut is CRCGCB.
-game.set_screen_format(ScreenFormat.RGB24)
-
+# game.set_screen_format(ScreenFormat.RGB24)
+game.set_screen_format(ScreenFormat.DEPTH_BUFFER8)
 # Sets other rendering options
 game.set_render_hud(False)
 game.set_render_crosshair(False)
