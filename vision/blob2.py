@@ -1,50 +1,38 @@
-import cv2
-import numpy as np;
-from skimage.color import rgb2gray
-
+import numpy as np
 import matplotlib.pyplot as plt
+
+from skimage import data
+from skimage.feature import match_template
 from skimage import io
 
-# Read image
-im = cv2.imread("Sprites/blobs.png", cv2.IMREAD_GRAYSCALE)
-params = cv2.SimpleBlobDetector_Params()
+image = io.imread("Sprites/blobs.png")
+blob = image[170:220, 75:130]
 
-# Change thresholds
-params.minThreshold = 1;
-params.maxThreshold = 200;
+result = match_template(image, blob)
+ij = np.unravel_index(np.argmax(result), result.shape)
 
-# Filter by Area.
-params.filterByArea = True
-params.minArea = 1
+fig = plt.figure(figsize=(8, 3))
+ax1 = plt.subplot(1, 3, 1)
+ax2 = plt.subplot(1, 3, 2, adjustable='box-forced')
+ax3 = plt.subplot(1, 3, 3, sharex=ax2, sharey=ax2, adjustable='box-forced')
 
-# Filter by Circularity
-params.filterByCircularity = True
-params.minCircularity = 0.1
+ax1.imshow(blob)
+ax1.set_axis_off()
+ax1.set_title('template')
 
-# Filter by Convexity
-params.filterByConvexity = True
-params.minConvexity = 0.87
+ax2.imshow(image)
+ax2.set_axis_off()
+ax2.set_title('image')
+# highlight matched region
+hcoin, wcoin = coin.shape
+rect = plt.Rectangle((x, y), wblob, hblob, edgecolor='r', facecolor='none')
+ax2.add_patch(rect)
 
-# Filter by Inertia
-params.filterByInertia = True
-params.minInertiaRatio = 0.01
+ax3.imshow(result)
+ax3.set_axis_off()
+ax3.set_title('`match_template`\nresult')
+# highlight matched region
+ax3.autoscale(False)
+ax3.plot(x, y, 'o', markeredgecolor='r', markerfacecolor='none', markersize=10)
 
-# Create a detector with the parameters
-ver = (cv2.__version__).split('.')
-if int(ver[0]) < 3 :
-    detector = cv2.SimpleBlobDetector(params)
-else :
-    detector = cv2.SimpleBlobDetector_create(params)
-# Set up the detector with default parameters.
-detector = cv2.SimpleBlobDetector()
-
-# Detect blobs.
-keypoints = detector.detect(im)
-
-# Draw detected blobs as red circles.
-# cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
-im_with_keypoints = cv2.drawKeypoints(im, keypoints, np.array([]), (0,0,255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-
-# Show keypoints
-cv2.imshow("Keypoints", im_with_keypoints)
-cv2.waitKey(0)
+plt.show()
