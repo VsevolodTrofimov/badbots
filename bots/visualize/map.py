@@ -94,3 +94,4 @@ def remove_item(type, id):
 
 add = Add()
 plot.show(block=False)
+clearfix()

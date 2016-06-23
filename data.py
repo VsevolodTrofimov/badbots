@@ -23,3 +23,5 @@ class Data:
 
 game = Data()
 vision = Data()
+
+played = True
