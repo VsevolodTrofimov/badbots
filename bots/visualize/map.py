@@ -4,9 +4,9 @@ import matplotlib.pyplot as plot
 import numpy as np
 from scipy import ndimage
 from matplotlib.patches import Wedge
+import time
 
 plot.axis([0, 50, 0, 40])
-plot.ion()
 
 itemsize = 1.0
 drew = {
@@ -16,7 +16,6 @@ drew = {
 }
 
 def clearfix():
-    # plot.axis('equal')
     plot.draw()
 
 class Add:
@@ -24,8 +23,6 @@ class Add:
         type_color = {
             "health": "g"
         }
-
-        print itemsize/2
 
         marker = plot.Circle(
             (cords["x"], cords["y"]), radius=itemsize/2,
@@ -93,4 +90,10 @@ def remove_item(type, id):
         drew[type][id].remove()
 
 add = Add()
-plot.show(block=False)
+
+replay_path = raw_input()
+
+replay = open("../../replays/min/" + replay_path + ".txt", "r")
+eval(replay.read())
+
+plot.show()

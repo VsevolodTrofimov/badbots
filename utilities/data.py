@@ -4,7 +4,7 @@ last_frame = {
     "reserved": True,
 }
 
-class Seen:
+class Adv_queue:
 	value = []
 	anything = False
 	def add(self, item):
@@ -17,6 +17,8 @@ class Seen:
 		self.anything = False
 		return export
 
-seen = Seen()
+seen = Adv_queue()
+
+visualize = Adv_queue()
 
 playing = True

@@ -1,0 +1,2 @@
+add.item({"y": 2, "x": 1}, "health", 0) 
+

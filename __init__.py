@@ -5,10 +5,14 @@ import cv2
 import time
 
 #edit at will
+save_min_replay = True
+
 botname = "lookaround"
 config = "basic"
-episodes = 10
-sleep_time = 20
+vision_threads_amount = 1
+
+episodes = 1
+sleep_time = 1
 
 
 #importing things other modules need
@@ -28,13 +32,13 @@ import data
 sys.path.append('./vision/')
 import fake_see
 #start vision
-vision1 = fake_see.VisionThread()
-vision1.setName("vis1")
-vision1.start()
-time.sleep(0.0001)
-vision2 = fake_see.VisionThread()
-vision2.setName("vis2")
-vision2.start()
+vision_threads = []
+
+for i in range(vision_threads_amount):
+	vision_threads.append(fake_see.VisionThread())
+	vision_threads[-1].setName("vis"+str(i))
+	vision_threads[-1].start()
+
 
 #Putting config
 game = DoomGame()
@@ -58,6 +62,7 @@ for i in range(episodes):
 		data.last_frame["image"] = counter
 		data.last_frame["depth"] = img
 		data.last_frame["reserved"] = False
+		data.last_frame["id"] = counter
 		#acting
 		bot_actions = bot.act(state)
 		
@@ -68,5 +73,8 @@ for i in range(episodes):
 		# Display the image here!
 		cv2.imshow('Doom Buffer', img)
 		cv2.waitKey(sleep_time)
+
+if save_min_replay:
+	bot.save_replay()
 
 cv2.destroyAllWindows()
