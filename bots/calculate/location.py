@@ -22,15 +22,3 @@ def location(player_cords, player_angle, distance, center_shift):
     print("iys", item_y_shift)
 
     return item_cords
-
-
-loc = location({
-        "x": 2.0,
-        "y": 3.0
-    },
-    0.0,
-    5.0,
-    4.0
-)
-
-print loc
