@@ -10,6 +10,10 @@ blob = image[170:220, 75:130]
 
 result = match_template(image, blob)
 ij = np.unravel_index(np.argmax(result), result.shape)
+<<<<<<< HEAD
+=======
+x, y = ij[::-1]
+>>>>>>> refs/remotes/origin/master
 
 fig = plt.figure(figsize=(8, 3))
 ax1 = plt.subplot(1, 3, 1)
