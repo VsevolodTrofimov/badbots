@@ -1,25 +1,22 @@
-import time
+last_frame = {
+    "depth": [],
+    "image": [],
+    "reserved": True,
+}
 
-time.start = time.time()
+class Seen:
+	value = []
+	anything = False
+	def add(self, item):
+		self.value.append(item)
+		self.anything = True
 
-class Data:
-    class Interaction:
-        data = []
+	def get(self):
+		export = self.value
+		self.value = []
+		self.anything = False
+		return export
 
-        def add(self, value):
-            self.data.append({
-                "time": time.time() - time.start,
-                "value": value
-            })
+seen = Seen()
 
-        def get(self):
-            exports = self.data
-            self.data = []
-            return exports
-
-    commands  = Interaction()
-    state = Interaction()
-
-
-game = Data()
-vision = Data()
+playing = True

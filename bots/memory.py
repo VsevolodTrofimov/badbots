@@ -1,12 +1,11 @@
 map = {
-	walls: [],
-	defence: {
-		health: [],
-		armor: []
+	"walls": [],
+	"defence": {
+		"health": [],
+		"armor": []
 	},
-	attack: {
-		guns: [],
-		
-	}
-	path: []
+	"attack": {
+		"guns": [],
+	},
+	"path": []
 }
