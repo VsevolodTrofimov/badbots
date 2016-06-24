@@ -17,6 +17,7 @@ sleep_time = 1
 
 #importing things other modules need
 sys.path.append('./bots/')
+sys.path.append('./bots/visualize/')
 sys.path.append('./utilities/')
 
 #import bot
@@ -27,15 +28,16 @@ import bot
 
 import decode
 import data
+import replay
 
 #import vision
 sys.path.append('./vision/')
-import fake_see
+import blob
 #start vision
 vision_threads = []
 
 for i in range(vision_threads_amount):
-	vision_threads.append(fake_see.VisionThread())
+	vision_threads.append(blob.VisionThread())
 	vision_threads[-1].setName("vis"+str(i))
 	vision_threads[-1].start()
 
@@ -43,8 +45,6 @@ for i in range(vision_threads_amount):
 #Putting config
 game = DoomGame()
 game.load_config("./launchers/configs/" + config + ".cfg")
-game.set_screen_format(ScreenFormat.DEPTH_BUFFER8)
-
 #let`s go!
 game.init()
 
@@ -56,10 +56,13 @@ for i in range(episodes):
 		state = game.get_state()
 		img = state.image_buffer
 		if game.get_screen_format() in [ScreenFormat.GRAY8, ScreenFormat.DEPTH_BUFFER8]:
-			img = img.reshape(img.shape[1], img.shape[2], 1)
+			img_dis = img.reshape(img.shape[1], img.shape[2], 1)
+			# Display the image here!
+			cv2.imshow('Doom Buffer', img_dis)
+			cv2.waitKey(sleep_time)
 
 		counter +=1
-		data.last_frame["image"] = counter
+		data.last_frame["image"] = img
 		data.last_frame["depth"] = img
 		data.last_frame["reserved"] = False
 		data.last_frame["id"] = counter
@@ -70,11 +73,10 @@ for i in range(episodes):
 			decode.actions(bot_actions)
 		)
 		data.playing = True
-		# Display the image here!
-		cv2.imshow('Doom Buffer', img)
-		cv2.waitKey(sleep_time)
+		time.sleep(0.1)
+		
 
 if save_min_replay:
-	bot.save_replay()
+	replay.save()
 
 cv2.destroyAllWindows()

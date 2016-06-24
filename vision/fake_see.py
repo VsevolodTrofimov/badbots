@@ -14,7 +14,7 @@ class VisionThread( threading.Thread ):
 				print("imma", self.name,
 					 "and i reserved last frame with",
 					 data.last_frame["id"])
-				time.sleep(1.5 + random.random())
+				time.sleep(0.5 + random.random())
 				img1 = data.last_frame["image"]
 				img_d = data.last_frame["depth"]
 				

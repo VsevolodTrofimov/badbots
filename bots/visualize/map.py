@@ -94,6 +94,10 @@ add = Add()
 replay_path = raw_input()
 
 replay = open("../../replays/min/" + replay_path + ".txt", "r")
-eval(replay.read())
+plot.ion()
+for line in replay.read().split("\n")[:-1]:
+    print(line)
+    eval(line)
 
-plot.show()
+while True:
+    plot.pause(0.5)
