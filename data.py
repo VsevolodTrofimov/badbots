@@ -1,27 +1,8 @@
 import time
+from Queue import Queue
 
 time.start = time.time()
 
-class Data:
-    class Interaction:
-        data = []
+game_commads = Queue()
 
-        def add(self, value):
-            self.data.append({
-                "time": time.time() - time.start,
-                "value": value
-            })
-
-        def get(self):
-            exports = self.data
-            self.data = []
-            return exports
-
-    commands  = Interaction()
-    state = Interaction()
-
-
-game = Data()
-vision = Data()
-
-played = True
+game_commads.join()

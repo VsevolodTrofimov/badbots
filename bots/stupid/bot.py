@@ -2,16 +2,16 @@
 import time
 from ... import data
 
+# from ..visualize import map
+# counter = 1
 
-# map.add.item({
-#     "x": 20,
-#     "y": 30
-# }, "health", 2)
+def bot():
+    # counter +=1
+    def run_around():
+        data.game_commands.put(["forward", "turn_left"])
+    run_around()
 
-def run_around():
-    print("cmd")
-    data.game.commands.add(["forward", "turn_left"])
-
-run_around()
-time.sleep(0.02)
-run_around()
+    # map.add.item({
+    #     "x": 20 +counter,
+    #     "y": 30
+    # }, "health", 2)
